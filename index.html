@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Arquitect Site</title>
+
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/fancy-sidebar.css" />
+<link rel="stylesheet" href="css/css_main.css" />
+<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body onresize="resizer()">
+	<div id="wrapper">
+        <div class="overlay"></div>
+    	
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <div>
+                <span>Contact</span>
+            </div>
+            <!--<ul class="nav sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                       Brand
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#">Events</a>
+                </li>
+                <li>
+                    <a href="#">Team</a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">Dropdown heading</li>
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+                <li>
+                    <a href="#">Services</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/maridlcrmn">Follow me</a>
+                </li>
+            </ul>-->
+        </nav>
+        <!-- /#sidebar-wrapper -->
+        
+        
+        <div id="float_btn" class="hamburger"  data-toggle="offcanvas">
+            	<img src="img/menu_icon.png" width="100%"/>
+	    </div>
+	    
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+        	<div id="dv_top_pannel">
+	        	<!--<img src="img/principal1.jpg" width="100%" height="100%"/>-->
+                <video width="100%" autoplay loop>
+                    <source src="img/principal1.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+	    	</div>
+            
+            <!--<button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+    			<span class="hamb-middle"></span>
+				<span class="hamb-bottom"></span>
+            </button>-->
+            <div id="dv_container" class="row">
+            	<div id="dv_name_c" class="col-lg-12" style="margin-top:-80px; height:80px; margin-left: 10px; border:solid 0px">
+            		<label class="company_name">A1059</label>
+            	</div>
+            	<div class="col-lg-12" style="background-color:white">
+	                <div class="row" >
+	                    <div class="col-lg-8">
+	                        <h1>BUILDING SITE</h1>
+	                        <p>working on</p> 
+                            <br /><br /><br /><br /><br /><br /><br /><br />
+                            <br /><br /><br /><br /><br /><br /><br /><br />
+                            <p>by AMORGA</p>                  
+	                    </div>
+	                </div>
+            	</div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+</body>
+
+<script type="text/javascript">
+
+$(document).ready(function () {
+   var trigger = $('.hamburger'),
+      overlay = $('.overlay'),
+     isClosed = false;
+
+    trigger.click(function () {
+      hamburger_cross();      
+    });
+
+    overlay.click(function () {
+      hamburger_cross();      
+    });
+
+    function hamburger_cross() {
+
+      if (isClosed == true) {          
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      } else {   
+        overlay.show();
+        trigger.removeClass('is-closed');
+        trigger.addClass('is-open');
+        isClosed = true;
+      }
+  	}
+  
+    $('[data-toggle="offcanvas"]').click(function () {
+    	menuaction();
+    }); 
+
+    $('.overlay').click(function () {
+    	menuaction();
+    });
+
+    function menuaction(){
+    	vW = $(window).width();
+
+    	if(vW > 720){
+    		$("#float_btn").toggleClass('btn_menu')
+    	}
+
+        $('#wrapper').toggleClass('toggled');
+    }
+
+    resizer(); 
+ 
+});
+
+function resizer(){
+	vW = $(window).width();
+	vH = $(window).height();
+
+	if(vW < 720){
+		$("#float_btn").css({'margin-top':vH-80, 'margin-left': vW - 60});
+	}else{
+		$("#float_btn").css({'margin-top':0, 'margin-left': 10});
+	}
+
+	if(vW > 1120){
+		$("#dv_top_pannel").css('height', vH);
+		$("#dv_container").css('padding-top', vH);
+	}else{
+		$("#dv_top_pannel").css('height', vW*0.55);
+		$("#dv_container").css('padding-top', vW*0.55); 
+	}
+}
+
+</script>
+
+</html>
